@@ -1,0 +1,2229 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="12/16/2023 2:37:29 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="KHOI"
+  DTS:CreatorName="KHOI\PC"
+  DTS:DTSID="{59FE5176-6D45-48C5-B34F-8CED48C20C6D}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5270.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package"
+  DTS:PackageType="5"
+  DTS:VersionBuild="20"
+  DTS:VersionGUID="{D7409A91-0AE5-48DD-A049-1A10BBCF98C7}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[KHOI.EPL]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{67F37B64-E27B-4EE3-8C43-D8312D15FD06}"
+      DTS:ObjectName="KHOI.EPL">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=KHOI;Initial Catalog=EPL;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Package-{67F37B64-E27B-4EE3-8C43-D8312D15FD06}KHOI.EPL;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[KHOI.Stage_FOOTBALL]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{BAD6521E-74C1-4274-86E7-874F429F5A63}"
+      DTS:ObjectName="KHOI.Stage_FOOTBALL">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=KHOI;Initial Catalog=Stage_FOOTBALL;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Package-{BAD6521E-74C1-4274-86E7-874F429F5A63}KHOI.Stage_FOOTBALL;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Load Event"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{332D629B-4574-4EEE-B32A-68AD1CDB038D}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Load Event">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Load Event\Event_ELP Source to Stage"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{FE3EDC8E-D896-46BA-A37B-2F09927B79C9}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Event_ELP Source to Stage"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Load Event\Event_ELP Source to Stage\Load event from EPL Source"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="Load event from EPL Source"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[Event]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Load Event\Event_ELP Source to Stage\Load event from EPL Source.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[KHOI.EPL]"
+                      connectionManagerRefId="Package.ConnectionManagers[KHOI.EPL]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Load Event\Event_ELP Source to Stage\Load event from EPL Source.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Load Event\Event_ELP Source to Stage\Load event from EPL Source.Outputs[OLE DB Source Output].Columns[event_id]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Load Event\Event_ELP Source to Stage\Load event from EPL Source.Outputs[OLE DB Source Output].ExternalColumns[event_id]"
+                          lineageId="Package\Load Event\Event_ELP Source to Stage\Load event from EPL Source.Outputs[OLE DB Source Output].Columns[event_id]"
+                          name="event_id"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Load Event\Event_ELP Source to Stage\Load event from EPL Source.Outputs[OLE DB Source Output].Columns[event_name]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Load Event\Event_ELP Source to Stage\Load event from EPL Source.Outputs[OLE DB Source Output].ExternalColumns[event_name]"
+                          length="50"
+                          lineageId="Package\Load Event\Event_ELP Source to Stage\Load event from EPL Source.Outputs[OLE DB Source Output].Columns[event_name]"
+                          name="event_name"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Load Event\Event_ELP Source to Stage\Load event from EPL Source.Outputs[OLE DB Source Output].Columns[event_time]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Load Event\Event_ELP Source to Stage\Load event from EPL Source.Outputs[OLE DB Source Output].ExternalColumns[event_time]"
+                          length="20"
+                          lineageId="Package\Load Event\Event_ELP Source to Stage\Load event from EPL Source.Outputs[OLE DB Source Output].Columns[event_time]"
+                          name="event_time"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Load Event\Event_ELP Source to Stage\Load event from EPL Source.Outputs[OLE DB Source Output].Columns[player_name]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Load Event\Event_ELP Source to Stage\Load event from EPL Source.Outputs[OLE DB Source Output].ExternalColumns[player_name]"
+                          length="50"
+                          lineageId="Package\Load Event\Event_ELP Source to Stage\Load event from EPL Source.Outputs[OLE DB Source Output].Columns[player_name]"
+                          name="player_name"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Load Event\Event_ELP Source to Stage\Load event from EPL Source.Outputs[OLE DB Source Output].Columns[team_id]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Load Event\Event_ELP Source to Stage\Load event from EPL Source.Outputs[OLE DB Source Output].ExternalColumns[team_id]"
+                          lineageId="Package\Load Event\Event_ELP Source to Stage\Load event from EPL Source.Outputs[OLE DB Source Output].Columns[team_id]"
+                          name="team_id"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Load Event\Event_ELP Source to Stage\Load event from EPL Source.Outputs[OLE DB Source Output].Columns[match_id]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Load Event\Event_ELP Source to Stage\Load event from EPL Source.Outputs[OLE DB Source Output].ExternalColumns[match_id]"
+                          lineageId="Package\Load Event\Event_ELP Source to Stage\Load event from EPL Source.Outputs[OLE DB Source Output].Columns[match_id]"
+                          name="match_id"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Load Event\Event_ELP Source to Stage\Load event from EPL Source.Outputs[OLE DB Source Output].ExternalColumns[event_id]"
+                          dataType="i4"
+                          name="event_id" />
+                        <externalMetadataColumn
+                          refId="Package\Load Event\Event_ELP Source to Stage\Load event from EPL Source.Outputs[OLE DB Source Output].ExternalColumns[event_name]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="event_name" />
+                        <externalMetadataColumn
+                          refId="Package\Load Event\Event_ELP Source to Stage\Load event from EPL Source.Outputs[OLE DB Source Output].ExternalColumns[event_time]"
+                          codePage="1252"
+                          dataType="str"
+                          length="20"
+                          name="event_time" />
+                        <externalMetadataColumn
+                          refId="Package\Load Event\Event_ELP Source to Stage\Load event from EPL Source.Outputs[OLE DB Source Output].ExternalColumns[player_name]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="player_name" />
+                        <externalMetadataColumn
+                          refId="Package\Load Event\Event_ELP Source to Stage\Load event from EPL Source.Outputs[OLE DB Source Output].ExternalColumns[team_id]"
+                          dataType="i4"
+                          name="team_id" />
+                        <externalMetadataColumn
+                          refId="Package\Load Event\Event_ELP Source to Stage\Load event from EPL Source.Outputs[OLE DB Source Output].ExternalColumns[match_id]"
+                          dataType="i4"
+                          name="match_id" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Load Event\Event_ELP Source to Stage\Load event from EPL Source.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Load Event\Event_ELP Source to Stage\Load event from EPL Source.Outputs[OLE DB Source Error Output].Columns[event_id]"
+                          dataType="i4"
+                          lineageId="Package\Load Event\Event_ELP Source to Stage\Load event from EPL Source.Outputs[OLE DB Source Error Output].Columns[event_id]"
+                          name="event_id" />
+                        <outputColumn
+                          refId="Package\Load Event\Event_ELP Source to Stage\Load event from EPL Source.Outputs[OLE DB Source Error Output].Columns[event_name]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\Load Event\Event_ELP Source to Stage\Load event from EPL Source.Outputs[OLE DB Source Error Output].Columns[event_name]"
+                          name="event_name" />
+                        <outputColumn
+                          refId="Package\Load Event\Event_ELP Source to Stage\Load event from EPL Source.Outputs[OLE DB Source Error Output].Columns[event_time]"
+                          codePage="1252"
+                          dataType="str"
+                          length="20"
+                          lineageId="Package\Load Event\Event_ELP Source to Stage\Load event from EPL Source.Outputs[OLE DB Source Error Output].Columns[event_time]"
+                          name="event_time" />
+                        <outputColumn
+                          refId="Package\Load Event\Event_ELP Source to Stage\Load event from EPL Source.Outputs[OLE DB Source Error Output].Columns[player_name]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\Load Event\Event_ELP Source to Stage\Load event from EPL Source.Outputs[OLE DB Source Error Output].Columns[player_name]"
+                          name="player_name" />
+                        <outputColumn
+                          refId="Package\Load Event\Event_ELP Source to Stage\Load event from EPL Source.Outputs[OLE DB Source Error Output].Columns[team_id]"
+                          dataType="i4"
+                          lineageId="Package\Load Event\Event_ELP Source to Stage\Load event from EPL Source.Outputs[OLE DB Source Error Output].Columns[team_id]"
+                          name="team_id" />
+                        <outputColumn
+                          refId="Package\Load Event\Event_ELP Source to Stage\Load event from EPL Source.Outputs[OLE DB Source Error Output].Columns[match_id]"
+                          dataType="i4"
+                          lineageId="Package\Load Event\Event_ELP Source to Stage\Load event from EPL Source.Outputs[OLE DB Source Error Output].Columns[match_id]"
+                          name="match_id" />
+                        <outputColumn
+                          refId="Package\Load Event\Event_ELP Source to Stage\Load event from EPL Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Load Event\Event_ELP Source to Stage\Load event from EPL Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Load Event\Event_ELP Source to Stage\Load event from EPL Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Load Event\Event_ELP Source to Stage\Load event from EPL Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Load Event\Event_ELP Source to Stage\OLE DB Destination"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="OLE DB Destination"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[Event_EPL_Stage]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Load Event\Event_ELP Source to Stage\OLE DB Destination.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[KHOI.Stage_FOOTBALL]"
+                      connectionManagerRefId="Package.ConnectionManagers[KHOI.Stage_FOOTBALL]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Load Event\Event_ELP Source to Stage\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Load Event\Event_ELP Source to Stage\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[event_name]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="event_name"
+                          externalMetadataColumnId="Package\Load Event\Event_ELP Source to Stage\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[event_name]"
+                          lineageId="Package\Load Event\Event_ELP Source to Stage\Load event from EPL Source.Outputs[OLE DB Source Output].Columns[event_name]" />
+                        <inputColumn
+                          refId="Package\Load Event\Event_ELP Source to Stage\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[event_time]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="20"
+                          cachedName="event_time"
+                          externalMetadataColumnId="Package\Load Event\Event_ELP Source to Stage\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[event_time]"
+                          lineageId="Package\Load Event\Event_ELP Source to Stage\Load event from EPL Source.Outputs[OLE DB Source Output].Columns[event_time]" />
+                        <inputColumn
+                          refId="Package\Load Event\Event_ELP Source to Stage\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[player_name]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="player_name"
+                          externalMetadataColumnId="Package\Load Event\Event_ELP Source to Stage\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[player_name]"
+                          lineageId="Package\Load Event\Event_ELP Source to Stage\Load event from EPL Source.Outputs[OLE DB Source Output].Columns[player_name]" />
+                        <inputColumn
+                          refId="Package\Load Event\Event_ELP Source to Stage\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[team_id]"
+                          cachedDataType="i4"
+                          cachedName="team_id"
+                          externalMetadataColumnId="Package\Load Event\Event_ELP Source to Stage\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[team_id]"
+                          lineageId="Package\Load Event\Event_ELP Source to Stage\Load event from EPL Source.Outputs[OLE DB Source Output].Columns[team_id]" />
+                        <inputColumn
+                          refId="Package\Load Event\Event_ELP Source to Stage\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[match_id]"
+                          cachedDataType="i4"
+                          cachedName="match_id"
+                          externalMetadataColumnId="Package\Load Event\Event_ELP Source to Stage\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[match_id]"
+                          lineageId="Package\Load Event\Event_ELP Source to Stage\Load event from EPL Source.Outputs[OLE DB Source Output].Columns[match_id]" />
+                        <inputColumn
+                          refId="Package\Load Event\Event_ELP Source to Stage\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[event_id]"
+                          cachedDataType="i4"
+                          cachedName="event_id"
+                          externalMetadataColumnId="Package\Load Event\Event_ELP Source to Stage\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[event_id]"
+                          lineageId="Package\Load Event\Event_ELP Source to Stage\Load event from EPL Source.Outputs[OLE DB Source Output].Columns[event_id]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Load Event\Event_ELP Source to Stage\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[event_id]"
+                          dataType="i4"
+                          name="event_id" />
+                        <externalMetadataColumn
+                          refId="Package\Load Event\Event_ELP Source to Stage\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[event_name]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="event_name" />
+                        <externalMetadataColumn
+                          refId="Package\Load Event\Event_ELP Source to Stage\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[event_time]"
+                          codePage="1252"
+                          dataType="str"
+                          length="20"
+                          name="event_time" />
+                        <externalMetadataColumn
+                          refId="Package\Load Event\Event_ELP Source to Stage\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[player_name]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="player_name" />
+                        <externalMetadataColumn
+                          refId="Package\Load Event\Event_ELP Source to Stage\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[team_id]"
+                          dataType="i4"
+                          name="team_id" />
+                        <externalMetadataColumn
+                          refId="Package\Load Event\Event_ELP Source to Stage\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[match_id]"
+                          dataType="i4"
+                          name="match_id" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Load Event\Event_ELP Source to Stage\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Load Event\Event_ELP Source to Stage\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Load Event\Event_ELP Source to Stage\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Load Event\Event_ELP Source to Stage\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Load Event\Event_ELP Source to Stage\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Load Event\Event_ELP Source to Stage\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Load Event\Event_ELP Source to Stage.Paths[OLE DB Source Output]"
+                  endId="Package\Load Event\Event_ELP Source to Stage\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\Load Event\Event_ELP Source to Stage\Load event from EPL Source.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Load Event\Truncate Event_EPL_Stage"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{A62532AA-3D48-44B2-A2B1-E592846D1846}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Truncate Event_EPL_Stage"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{BAD6521E-74C1-4274-86E7-874F429F5A63}"
+              SQLTask:SqlStatementSource="DELETE FROM [Event_EPL_Stage];" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Load Event.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{923E7F16-CB3E-455C-BE54-3847E6056D30}"
+          DTS:From="Package\Load Event\Truncate Event_EPL_Stage"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Load Event\Event_ELP Source to Stage" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Load Match"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{9F55ED02-5214-4540-B656-BE0973974D54}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Load Match">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Load Match\Match_EPL Source to Stage"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{07688C1B-7400-4F73-BEBB-62D71B4C0988}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Match_EPL Source to Stage"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Load Match\Match_EPL Source to Stage\Insert Match to ELP Stage"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="Insert Match to ELP Stage"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[Match_EPL_Stage]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Load Match\Match_EPL Source to Stage\Insert Match to ELP Stage.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[KHOI.Stage_FOOTBALL]"
+                      connectionManagerRefId="Package.ConnectionManagers[KHOI.Stage_FOOTBALL]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Load Match\Match_EPL Source to Stage\Insert Match to ELP Stage.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Load Match\Match_EPL Source to Stage\Insert Match to ELP Stage.Inputs[OLE DB Destination Input].Columns[match_id]"
+                          cachedDataType="i4"
+                          cachedName="match_id"
+                          externalMetadataColumnId="Package\Load Match\Match_EPL Source to Stage\Insert Match to ELP Stage.Inputs[OLE DB Destination Input].ExternalColumns[match_id]"
+                          lineageId="Package\Load Match\Match_EPL Source to Stage\Load Match from ELP source.Outputs[OLE DB Source Output].Columns[match_id]" />
+                        <inputColumn
+                          refId="Package\Load Match\Match_EPL Source to Stage\Insert Match to ELP Stage.Inputs[OLE DB Destination Input].Columns[date]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="date"
+                          externalMetadataColumnId="Package\Load Match\Match_EPL Source to Stage\Insert Match to ELP Stage.Inputs[OLE DB Destination Input].ExternalColumns[date]"
+                          lineageId="Package\Load Match\Match_EPL Source to Stage\Load Match from ELP source.Outputs[OLE DB Source Output].Columns[date]" />
+                        <inputColumn
+                          refId="Package\Load Match\Match_EPL Source to Stage\Insert Match to ELP Stage.Inputs[OLE DB Destination Input].Columns[home_team_id]"
+                          cachedDataType="i4"
+                          cachedName="home_team_id"
+                          externalMetadataColumnId="Package\Load Match\Match_EPL Source to Stage\Insert Match to ELP Stage.Inputs[OLE DB Destination Input].ExternalColumns[home_team_id]"
+                          lineageId="Package\Load Match\Match_EPL Source to Stage\Load Match from ELP source.Outputs[OLE DB Source Output].Columns[home_team_id]" />
+                        <inputColumn
+                          refId="Package\Load Match\Match_EPL Source to Stage\Insert Match to ELP Stage.Inputs[OLE DB Destination Input].Columns[home_statistic_id]"
+                          cachedDataType="i4"
+                          cachedName="home_statistic_id"
+                          externalMetadataColumnId="Package\Load Match\Match_EPL Source to Stage\Insert Match to ELP Stage.Inputs[OLE DB Destination Input].ExternalColumns[home_statistic_id]"
+                          lineageId="Package\Load Match\Match_EPL Source to Stage\Load Match from ELP source.Outputs[OLE DB Source Output].Columns[home_statistic_id]" />
+                        <inputColumn
+                          refId="Package\Load Match\Match_EPL Source to Stage\Insert Match to ELP Stage.Inputs[OLE DB Destination Input].Columns[away_team_id]"
+                          cachedDataType="i4"
+                          cachedName="away_team_id"
+                          externalMetadataColumnId="Package\Load Match\Match_EPL Source to Stage\Insert Match to ELP Stage.Inputs[OLE DB Destination Input].ExternalColumns[away_team_id]"
+                          lineageId="Package\Load Match\Match_EPL Source to Stage\Load Match from ELP source.Outputs[OLE DB Source Output].Columns[away_team_id]" />
+                        <inputColumn
+                          refId="Package\Load Match\Match_EPL Source to Stage\Insert Match to ELP Stage.Inputs[OLE DB Destination Input].Columns[away_statistic_id]"
+                          cachedDataType="i4"
+                          cachedName="away_statistic_id"
+                          externalMetadataColumnId="Package\Load Match\Match_EPL Source to Stage\Insert Match to ELP Stage.Inputs[OLE DB Destination Input].ExternalColumns[away_statistic_id]"
+                          lineageId="Package\Load Match\Match_EPL Source to Stage\Load Match from ELP source.Outputs[OLE DB Source Output].Columns[away_statistic_id]" />
+                        <inputColumn
+                          refId="Package\Load Match\Match_EPL Source to Stage\Insert Match to ELP Stage.Inputs[OLE DB Destination Input].Columns[league_name]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="league_name"
+                          externalMetadataColumnId="Package\Load Match\Match_EPL Source to Stage\Insert Match to ELP Stage.Inputs[OLE DB Destination Input].ExternalColumns[league_name]"
+                          lineageId="Package\Load Match\Match_EPL Source to Stage\Load Match from ELP source.Outputs[OLE DB Source Output].Columns[league_name]" />
+                        <inputColumn
+                          refId="Package\Load Match\Match_EPL Source to Stage\Insert Match to ELP Stage.Inputs[OLE DB Destination Input].Columns[season]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="season"
+                          externalMetadataColumnId="Package\Load Match\Match_EPL Source to Stage\Insert Match to ELP Stage.Inputs[OLE DB Destination Input].ExternalColumns[season]"
+                          lineageId="Package\Load Match\Match_EPL Source to Stage\Load Match from ELP source.Outputs[OLE DB Source Output].Columns[season]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Load Match\Match_EPL Source to Stage\Insert Match to ELP Stage.Inputs[OLE DB Destination Input].ExternalColumns[match_id]"
+                          dataType="i4"
+                          name="match_id" />
+                        <externalMetadataColumn
+                          refId="Package\Load Match\Match_EPL Source to Stage\Insert Match to ELP Stage.Inputs[OLE DB Destination Input].ExternalColumns[date]"
+                          dataType="dbTimeStamp"
+                          name="date" />
+                        <externalMetadataColumn
+                          refId="Package\Load Match\Match_EPL Source to Stage\Insert Match to ELP Stage.Inputs[OLE DB Destination Input].ExternalColumns[home_team_id]"
+                          dataType="i4"
+                          name="home_team_id" />
+                        <externalMetadataColumn
+                          refId="Package\Load Match\Match_EPL Source to Stage\Insert Match to ELP Stage.Inputs[OLE DB Destination Input].ExternalColumns[home_statistic_id]"
+                          dataType="i4"
+                          name="home_statistic_id" />
+                        <externalMetadataColumn
+                          refId="Package\Load Match\Match_EPL Source to Stage\Insert Match to ELP Stage.Inputs[OLE DB Destination Input].ExternalColumns[away_team_id]"
+                          dataType="i4"
+                          name="away_team_id" />
+                        <externalMetadataColumn
+                          refId="Package\Load Match\Match_EPL Source to Stage\Insert Match to ELP Stage.Inputs[OLE DB Destination Input].ExternalColumns[away_statistic_id]"
+                          dataType="i4"
+                          name="away_statistic_id" />
+                        <externalMetadataColumn
+                          refId="Package\Load Match\Match_EPL Source to Stage\Insert Match to ELP Stage.Inputs[OLE DB Destination Input].ExternalColumns[league_name]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="league_name" />
+                        <externalMetadataColumn
+                          refId="Package\Load Match\Match_EPL Source to Stage\Insert Match to ELP Stage.Inputs[OLE DB Destination Input].ExternalColumns[season]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="season" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Load Match\Match_EPL Source to Stage\Insert Match to ELP Stage.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Load Match\Match_EPL Source to Stage\Insert Match to ELP Stage.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Load Match\Match_EPL Source to Stage\Insert Match to ELP Stage.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Load Match\Match_EPL Source to Stage\Insert Match to ELP Stage.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Load Match\Match_EPL Source to Stage\Insert Match to ELP Stage.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Load Match\Match_EPL Source to Stage\Insert Match to ELP Stage.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Load Match\Match_EPL Source to Stage\Load Match from ELP source"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="Load Match from ELP source"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[Match]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Load Match\Match_EPL Source to Stage\Load Match from ELP source.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[KHOI.EPL]"
+                      connectionManagerRefId="Package.ConnectionManagers[KHOI.EPL]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Load Match\Match_EPL Source to Stage\Load Match from ELP source.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Load Match\Match_EPL Source to Stage\Load Match from ELP source.Outputs[OLE DB Source Output].Columns[match_id]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Load Match\Match_EPL Source to Stage\Load Match from ELP source.Outputs[OLE DB Source Output].ExternalColumns[match_id]"
+                          lineageId="Package\Load Match\Match_EPL Source to Stage\Load Match from ELP source.Outputs[OLE DB Source Output].Columns[match_id]"
+                          name="match_id"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Load Match\Match_EPL Source to Stage\Load Match from ELP source.Outputs[OLE DB Source Output].Columns[date]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Load Match\Match_EPL Source to Stage\Load Match from ELP source.Outputs[OLE DB Source Output].ExternalColumns[date]"
+                          lineageId="Package\Load Match\Match_EPL Source to Stage\Load Match from ELP source.Outputs[OLE DB Source Output].Columns[date]"
+                          name="date"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Load Match\Match_EPL Source to Stage\Load Match from ELP source.Outputs[OLE DB Source Output].Columns[home_team_id]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Load Match\Match_EPL Source to Stage\Load Match from ELP source.Outputs[OLE DB Source Output].ExternalColumns[home_team_id]"
+                          lineageId="Package\Load Match\Match_EPL Source to Stage\Load Match from ELP source.Outputs[OLE DB Source Output].Columns[home_team_id]"
+                          name="home_team_id"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Load Match\Match_EPL Source to Stage\Load Match from ELP source.Outputs[OLE DB Source Output].Columns[home_statistic_id]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Load Match\Match_EPL Source to Stage\Load Match from ELP source.Outputs[OLE DB Source Output].ExternalColumns[home_statistic_id]"
+                          lineageId="Package\Load Match\Match_EPL Source to Stage\Load Match from ELP source.Outputs[OLE DB Source Output].Columns[home_statistic_id]"
+                          name="home_statistic_id"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Load Match\Match_EPL Source to Stage\Load Match from ELP source.Outputs[OLE DB Source Output].Columns[away_team_id]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Load Match\Match_EPL Source to Stage\Load Match from ELP source.Outputs[OLE DB Source Output].ExternalColumns[away_team_id]"
+                          lineageId="Package\Load Match\Match_EPL Source to Stage\Load Match from ELP source.Outputs[OLE DB Source Output].Columns[away_team_id]"
+                          name="away_team_id"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Load Match\Match_EPL Source to Stage\Load Match from ELP source.Outputs[OLE DB Source Output].Columns[away_statistic_id]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Load Match\Match_EPL Source to Stage\Load Match from ELP source.Outputs[OLE DB Source Output].ExternalColumns[away_statistic_id]"
+                          lineageId="Package\Load Match\Match_EPL Source to Stage\Load Match from ELP source.Outputs[OLE DB Source Output].Columns[away_statistic_id]"
+                          name="away_statistic_id"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Load Match\Match_EPL Source to Stage\Load Match from ELP source.Outputs[OLE DB Source Output].Columns[league_name]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Load Match\Match_EPL Source to Stage\Load Match from ELP source.Outputs[OLE DB Source Output].ExternalColumns[league_name]"
+                          length="50"
+                          lineageId="Package\Load Match\Match_EPL Source to Stage\Load Match from ELP source.Outputs[OLE DB Source Output].Columns[league_name]"
+                          name="league_name"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Load Match\Match_EPL Source to Stage\Load Match from ELP source.Outputs[OLE DB Source Output].Columns[season]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Load Match\Match_EPL Source to Stage\Load Match from ELP source.Outputs[OLE DB Source Output].ExternalColumns[season]"
+                          length="50"
+                          lineageId="Package\Load Match\Match_EPL Source to Stage\Load Match from ELP source.Outputs[OLE DB Source Output].Columns[season]"
+                          name="season"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Load Match\Match_EPL Source to Stage\Load Match from ELP source.Outputs[OLE DB Source Output].ExternalColumns[match_id]"
+                          dataType="i4"
+                          name="match_id" />
+                        <externalMetadataColumn
+                          refId="Package\Load Match\Match_EPL Source to Stage\Load Match from ELP source.Outputs[OLE DB Source Output].ExternalColumns[date]"
+                          dataType="dbTimeStamp"
+                          name="date" />
+                        <externalMetadataColumn
+                          refId="Package\Load Match\Match_EPL Source to Stage\Load Match from ELP source.Outputs[OLE DB Source Output].ExternalColumns[home_team_id]"
+                          dataType="i4"
+                          name="home_team_id" />
+                        <externalMetadataColumn
+                          refId="Package\Load Match\Match_EPL Source to Stage\Load Match from ELP source.Outputs[OLE DB Source Output].ExternalColumns[home_statistic_id]"
+                          dataType="i4"
+                          name="home_statistic_id" />
+                        <externalMetadataColumn
+                          refId="Package\Load Match\Match_EPL Source to Stage\Load Match from ELP source.Outputs[OLE DB Source Output].ExternalColumns[away_team_id]"
+                          dataType="i4"
+                          name="away_team_id" />
+                        <externalMetadataColumn
+                          refId="Package\Load Match\Match_EPL Source to Stage\Load Match from ELP source.Outputs[OLE DB Source Output].ExternalColumns[away_statistic_id]"
+                          dataType="i4"
+                          name="away_statistic_id" />
+                        <externalMetadataColumn
+                          refId="Package\Load Match\Match_EPL Source to Stage\Load Match from ELP source.Outputs[OLE DB Source Output].ExternalColumns[league_name]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="league_name" />
+                        <externalMetadataColumn
+                          refId="Package\Load Match\Match_EPL Source to Stage\Load Match from ELP source.Outputs[OLE DB Source Output].ExternalColumns[season]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="season" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Load Match\Match_EPL Source to Stage\Load Match from ELP source.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Load Match\Match_EPL Source to Stage\Load Match from ELP source.Outputs[OLE DB Source Error Output].Columns[match_id]"
+                          dataType="i4"
+                          lineageId="Package\Load Match\Match_EPL Source to Stage\Load Match from ELP source.Outputs[OLE DB Source Error Output].Columns[match_id]"
+                          name="match_id" />
+                        <outputColumn
+                          refId="Package\Load Match\Match_EPL Source to Stage\Load Match from ELP source.Outputs[OLE DB Source Error Output].Columns[date]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\Load Match\Match_EPL Source to Stage\Load Match from ELP source.Outputs[OLE DB Source Error Output].Columns[date]"
+                          name="date" />
+                        <outputColumn
+                          refId="Package\Load Match\Match_EPL Source to Stage\Load Match from ELP source.Outputs[OLE DB Source Error Output].Columns[home_team_id]"
+                          dataType="i4"
+                          lineageId="Package\Load Match\Match_EPL Source to Stage\Load Match from ELP source.Outputs[OLE DB Source Error Output].Columns[home_team_id]"
+                          name="home_team_id" />
+                        <outputColumn
+                          refId="Package\Load Match\Match_EPL Source to Stage\Load Match from ELP source.Outputs[OLE DB Source Error Output].Columns[home_statistic_id]"
+                          dataType="i4"
+                          lineageId="Package\Load Match\Match_EPL Source to Stage\Load Match from ELP source.Outputs[OLE DB Source Error Output].Columns[home_statistic_id]"
+                          name="home_statistic_id" />
+                        <outputColumn
+                          refId="Package\Load Match\Match_EPL Source to Stage\Load Match from ELP source.Outputs[OLE DB Source Error Output].Columns[away_team_id]"
+                          dataType="i4"
+                          lineageId="Package\Load Match\Match_EPL Source to Stage\Load Match from ELP source.Outputs[OLE DB Source Error Output].Columns[away_team_id]"
+                          name="away_team_id" />
+                        <outputColumn
+                          refId="Package\Load Match\Match_EPL Source to Stage\Load Match from ELP source.Outputs[OLE DB Source Error Output].Columns[away_statistic_id]"
+                          dataType="i4"
+                          lineageId="Package\Load Match\Match_EPL Source to Stage\Load Match from ELP source.Outputs[OLE DB Source Error Output].Columns[away_statistic_id]"
+                          name="away_statistic_id" />
+                        <outputColumn
+                          refId="Package\Load Match\Match_EPL Source to Stage\Load Match from ELP source.Outputs[OLE DB Source Error Output].Columns[league_name]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\Load Match\Match_EPL Source to Stage\Load Match from ELP source.Outputs[OLE DB Source Error Output].Columns[league_name]"
+                          name="league_name" />
+                        <outputColumn
+                          refId="Package\Load Match\Match_EPL Source to Stage\Load Match from ELP source.Outputs[OLE DB Source Error Output].Columns[season]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\Load Match\Match_EPL Source to Stage\Load Match from ELP source.Outputs[OLE DB Source Error Output].Columns[season]"
+                          name="season" />
+                        <outputColumn
+                          refId="Package\Load Match\Match_EPL Source to Stage\Load Match from ELP source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Load Match\Match_EPL Source to Stage\Load Match from ELP source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Load Match\Match_EPL Source to Stage\Load Match from ELP source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Load Match\Match_EPL Source to Stage\Load Match from ELP source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Load Match\Match_EPL Source to Stage.Paths[OLE DB Source Output]"
+                  endId="Package\Load Match\Match_EPL Source to Stage\Insert Match to ELP Stage.Inputs[OLE DB Destination Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\Load Match\Match_EPL Source to Stage\Load Match from ELP source.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Load Match\Truncate Match_EPL_Stage"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{5DC973BC-67D9-49AB-BE27-185FCBDBB7A6}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Truncate Match_EPL_Stage"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{BAD6521E-74C1-4274-86E7-874F429F5A63}"
+              SQLTask:SqlStatementSource="DELETE FROM [Match_EPL_Stage]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Load Match.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{7CF96F4C-9CAB-4187-A025-4327BE697AD9}"
+          DTS:From="Package\Load Match\Truncate Match_EPL_Stage"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Load Match\Match_EPL Source to Stage" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Load Static"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{676ACCFE-8F32-4211-A8EB-D2EF1B773E58}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Load Static">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Load Static\Statistic_EPL Source to Stage"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{7A4B359F-3372-411F-90DB-BC5A586CA103}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Statistic_EPL Source to Stage"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Load Static\Statistic_EPL Source to Stage\Insert Statistic to EPL Stage"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="Insert Statistic to EPL Stage"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[Statistic_EPL_Stage]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Load Static\Statistic_EPL Source to Stage\Insert Statistic to EPL Stage.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[KHOI.Stage_FOOTBALL]"
+                      connectionManagerRefId="Package.ConnectionManagers[KHOI.Stage_FOOTBALL]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Load Static\Statistic_EPL Source to Stage\Insert Statistic to EPL Stage.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Load Static\Statistic_EPL Source to Stage\Insert Statistic to EPL Stage.Inputs[OLE DB Destination Input].Columns[statistic_id]"
+                          cachedDataType="i4"
+                          cachedName="statistic_id"
+                          externalMetadataColumnId="Package\Load Static\Statistic_EPL Source to Stage\Insert Statistic to EPL Stage.Inputs[OLE DB Destination Input].ExternalColumns[statistic_id]"
+                          lineageId="Package\Load Static\Statistic_EPL Source to Stage\Load Statistic to EPL Source.Outputs[OLE DB Source Output].Columns[statistic_id]" />
+                        <inputColumn
+                          refId="Package\Load Static\Statistic_EPL Source to Stage\Insert Statistic to EPL Stage.Inputs[OLE DB Destination Input].Columns[total_shot]"
+                          cachedDataType="i4"
+                          cachedName="total_shot"
+                          externalMetadataColumnId="Package\Load Static\Statistic_EPL Source to Stage\Insert Statistic to EPL Stage.Inputs[OLE DB Destination Input].ExternalColumns[total_shot]"
+                          lineageId="Package\Load Static\Statistic_EPL Source to Stage\Load Statistic to EPL Source.Outputs[OLE DB Source Output].Columns[total_shot]" />
+                        <inputColumn
+                          refId="Package\Load Static\Statistic_EPL Source to Stage\Insert Statistic to EPL Stage.Inputs[OLE DB Destination Input].Columns[shot_on_target]"
+                          cachedDataType="i4"
+                          cachedName="shot_on_target"
+                          externalMetadataColumnId="Package\Load Static\Statistic_EPL Source to Stage\Insert Statistic to EPL Stage.Inputs[OLE DB Destination Input].ExternalColumns[shot_on_target]"
+                          lineageId="Package\Load Static\Statistic_EPL Source to Stage\Load Statistic to EPL Source.Outputs[OLE DB Source Output].Columns[shot_on_target]" />
+                        <inputColumn
+                          refId="Package\Load Static\Statistic_EPL Source to Stage\Insert Statistic to EPL Stage.Inputs[OLE DB Destination Input].Columns[ball_control]"
+                          cachedDataType="i4"
+                          cachedName="ball_control"
+                          externalMetadataColumnId="Package\Load Static\Statistic_EPL Source to Stage\Insert Statistic to EPL Stage.Inputs[OLE DB Destination Input].ExternalColumns[ball_control]"
+                          lineageId="Package\Load Static\Statistic_EPL Source to Stage\Load Statistic to EPL Source.Outputs[OLE DB Source Output].Columns[ball_control]" />
+                        <inputColumn
+                          refId="Package\Load Static\Statistic_EPL Source to Stage\Insert Statistic to EPL Stage.Inputs[OLE DB Destination Input].Columns[total_number_of_passes]"
+                          cachedDataType="i4"
+                          cachedName="total_number_of_passes"
+                          externalMetadataColumnId="Package\Load Static\Statistic_EPL Source to Stage\Insert Statistic to EPL Stage.Inputs[OLE DB Destination Input].ExternalColumns[total_number_of_passes]"
+                          lineageId="Package\Load Static\Statistic_EPL Source to Stage\Load Statistic to EPL Source.Outputs[OLE DB Source Output].Columns[total_number_of_passes]" />
+                        <inputColumn
+                          refId="Package\Load Static\Statistic_EPL Source to Stage\Insert Statistic to EPL Stage.Inputs[OLE DB Destination Input].Columns[corner_kicks]"
+                          cachedDataType="i4"
+                          cachedName="corner_kicks"
+                          externalMetadataColumnId="Package\Load Static\Statistic_EPL Source to Stage\Insert Statistic to EPL Stage.Inputs[OLE DB Destination Input].ExternalColumns[corner_kicks]"
+                          lineageId="Package\Load Static\Statistic_EPL Source to Stage\Load Statistic to EPL Source.Outputs[OLE DB Source Output].Columns[corner_kicks]" />
+                        <inputColumn
+                          refId="Package\Load Static\Statistic_EPL Source to Stage\Insert Statistic to EPL Stage.Inputs[OLE DB Destination Input].Columns[offside]"
+                          cachedDataType="i4"
+                          cachedName="offside"
+                          externalMetadataColumnId="Package\Load Static\Statistic_EPL Source to Stage\Insert Statistic to EPL Stage.Inputs[OLE DB Destination Input].ExternalColumns[offside]"
+                          lineageId="Package\Load Static\Statistic_EPL Source to Stage\Load Statistic to EPL Source.Outputs[OLE DB Source Output].Columns[offside]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Load Static\Statistic_EPL Source to Stage\Insert Statistic to EPL Stage.Inputs[OLE DB Destination Input].ExternalColumns[statistic_id]"
+                          dataType="i4"
+                          name="statistic_id" />
+                        <externalMetadataColumn
+                          refId="Package\Load Static\Statistic_EPL Source to Stage\Insert Statistic to EPL Stage.Inputs[OLE DB Destination Input].ExternalColumns[total_shot]"
+                          dataType="i4"
+                          name="total_shot" />
+                        <externalMetadataColumn
+                          refId="Package\Load Static\Statistic_EPL Source to Stage\Insert Statistic to EPL Stage.Inputs[OLE DB Destination Input].ExternalColumns[shot_on_target]"
+                          dataType="i4"
+                          name="shot_on_target" />
+                        <externalMetadataColumn
+                          refId="Package\Load Static\Statistic_EPL Source to Stage\Insert Statistic to EPL Stage.Inputs[OLE DB Destination Input].ExternalColumns[ball_control]"
+                          dataType="i4"
+                          name="ball_control" />
+                        <externalMetadataColumn
+                          refId="Package\Load Static\Statistic_EPL Source to Stage\Insert Statistic to EPL Stage.Inputs[OLE DB Destination Input].ExternalColumns[total_number_of_passes]"
+                          dataType="i4"
+                          name="total_number_of_passes" />
+                        <externalMetadataColumn
+                          refId="Package\Load Static\Statistic_EPL Source to Stage\Insert Statistic to EPL Stage.Inputs[OLE DB Destination Input].ExternalColumns[corner_kicks]"
+                          dataType="i4"
+                          name="corner_kicks" />
+                        <externalMetadataColumn
+                          refId="Package\Load Static\Statistic_EPL Source to Stage\Insert Statistic to EPL Stage.Inputs[OLE DB Destination Input].ExternalColumns[offside]"
+                          dataType="i4"
+                          name="offside" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Load Static\Statistic_EPL Source to Stage\Insert Statistic to EPL Stage.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Load Static\Statistic_EPL Source to Stage\Insert Statistic to EPL Stage.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Load Static\Statistic_EPL Source to Stage\Insert Statistic to EPL Stage.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Load Static\Statistic_EPL Source to Stage\Insert Statistic to EPL Stage.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Load Static\Statistic_EPL Source to Stage\Insert Statistic to EPL Stage.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Load Static\Statistic_EPL Source to Stage\Insert Statistic to EPL Stage.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Load Static\Statistic_EPL Source to Stage\Load Statistic to EPL Source"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="Load Statistic to EPL Source"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[Statistic]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Load Static\Statistic_EPL Source to Stage\Load Statistic to EPL Source.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[KHOI.EPL]"
+                      connectionManagerRefId="Package.ConnectionManagers[KHOI.EPL]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Load Static\Statistic_EPL Source to Stage\Load Statistic to EPL Source.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Load Static\Statistic_EPL Source to Stage\Load Statistic to EPL Source.Outputs[OLE DB Source Output].Columns[statistic_id]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Load Static\Statistic_EPL Source to Stage\Load Statistic to EPL Source.Outputs[OLE DB Source Output].ExternalColumns[statistic_id]"
+                          lineageId="Package\Load Static\Statistic_EPL Source to Stage\Load Statistic to EPL Source.Outputs[OLE DB Source Output].Columns[statistic_id]"
+                          name="statistic_id"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Load Static\Statistic_EPL Source to Stage\Load Statistic to EPL Source.Outputs[OLE DB Source Output].Columns[total_shot]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Load Static\Statistic_EPL Source to Stage\Load Statistic to EPL Source.Outputs[OLE DB Source Output].ExternalColumns[total_shot]"
+                          lineageId="Package\Load Static\Statistic_EPL Source to Stage\Load Statistic to EPL Source.Outputs[OLE DB Source Output].Columns[total_shot]"
+                          name="total_shot"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Load Static\Statistic_EPL Source to Stage\Load Statistic to EPL Source.Outputs[OLE DB Source Output].Columns[shot_on_target]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Load Static\Statistic_EPL Source to Stage\Load Statistic to EPL Source.Outputs[OLE DB Source Output].ExternalColumns[shot_on_target]"
+                          lineageId="Package\Load Static\Statistic_EPL Source to Stage\Load Statistic to EPL Source.Outputs[OLE DB Source Output].Columns[shot_on_target]"
+                          name="shot_on_target"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Load Static\Statistic_EPL Source to Stage\Load Statistic to EPL Source.Outputs[OLE DB Source Output].Columns[ball_control]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Load Static\Statistic_EPL Source to Stage\Load Statistic to EPL Source.Outputs[OLE DB Source Output].ExternalColumns[ball_control]"
+                          lineageId="Package\Load Static\Statistic_EPL Source to Stage\Load Statistic to EPL Source.Outputs[OLE DB Source Output].Columns[ball_control]"
+                          name="ball_control"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Load Static\Statistic_EPL Source to Stage\Load Statistic to EPL Source.Outputs[OLE DB Source Output].Columns[total_number_of_passes]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Load Static\Statistic_EPL Source to Stage\Load Statistic to EPL Source.Outputs[OLE DB Source Output].ExternalColumns[total_number_of_passes]"
+                          lineageId="Package\Load Static\Statistic_EPL Source to Stage\Load Statistic to EPL Source.Outputs[OLE DB Source Output].Columns[total_number_of_passes]"
+                          name="total_number_of_passes"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Load Static\Statistic_EPL Source to Stage\Load Statistic to EPL Source.Outputs[OLE DB Source Output].Columns[corner_kicks]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Load Static\Statistic_EPL Source to Stage\Load Statistic to EPL Source.Outputs[OLE DB Source Output].ExternalColumns[corner_kicks]"
+                          lineageId="Package\Load Static\Statistic_EPL Source to Stage\Load Statistic to EPL Source.Outputs[OLE DB Source Output].Columns[corner_kicks]"
+                          name="corner_kicks"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Load Static\Statistic_EPL Source to Stage\Load Statistic to EPL Source.Outputs[OLE DB Source Output].Columns[offside]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Load Static\Statistic_EPL Source to Stage\Load Statistic to EPL Source.Outputs[OLE DB Source Output].ExternalColumns[offside]"
+                          lineageId="Package\Load Static\Statistic_EPL Source to Stage\Load Statistic to EPL Source.Outputs[OLE DB Source Output].Columns[offside]"
+                          name="offside"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Load Static\Statistic_EPL Source to Stage\Load Statistic to EPL Source.Outputs[OLE DB Source Output].ExternalColumns[statistic_id]"
+                          dataType="i4"
+                          name="statistic_id" />
+                        <externalMetadataColumn
+                          refId="Package\Load Static\Statistic_EPL Source to Stage\Load Statistic to EPL Source.Outputs[OLE DB Source Output].ExternalColumns[total_shot]"
+                          dataType="i4"
+                          name="total_shot" />
+                        <externalMetadataColumn
+                          refId="Package\Load Static\Statistic_EPL Source to Stage\Load Statistic to EPL Source.Outputs[OLE DB Source Output].ExternalColumns[shot_on_target]"
+                          dataType="i4"
+                          name="shot_on_target" />
+                        <externalMetadataColumn
+                          refId="Package\Load Static\Statistic_EPL Source to Stage\Load Statistic to EPL Source.Outputs[OLE DB Source Output].ExternalColumns[ball_control]"
+                          dataType="i4"
+                          name="ball_control" />
+                        <externalMetadataColumn
+                          refId="Package\Load Static\Statistic_EPL Source to Stage\Load Statistic to EPL Source.Outputs[OLE DB Source Output].ExternalColumns[total_number_of_passes]"
+                          dataType="i4"
+                          name="total_number_of_passes" />
+                        <externalMetadataColumn
+                          refId="Package\Load Static\Statistic_EPL Source to Stage\Load Statistic to EPL Source.Outputs[OLE DB Source Output].ExternalColumns[corner_kicks]"
+                          dataType="i4"
+                          name="corner_kicks" />
+                        <externalMetadataColumn
+                          refId="Package\Load Static\Statistic_EPL Source to Stage\Load Statistic to EPL Source.Outputs[OLE DB Source Output].ExternalColumns[offside]"
+                          dataType="i4"
+                          name="offside" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Load Static\Statistic_EPL Source to Stage\Load Statistic to EPL Source.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Load Static\Statistic_EPL Source to Stage\Load Statistic to EPL Source.Outputs[OLE DB Source Error Output].Columns[statistic_id]"
+                          dataType="i4"
+                          lineageId="Package\Load Static\Statistic_EPL Source to Stage\Load Statistic to EPL Source.Outputs[OLE DB Source Error Output].Columns[statistic_id]"
+                          name="statistic_id" />
+                        <outputColumn
+                          refId="Package\Load Static\Statistic_EPL Source to Stage\Load Statistic to EPL Source.Outputs[OLE DB Source Error Output].Columns[total_shot]"
+                          dataType="i4"
+                          lineageId="Package\Load Static\Statistic_EPL Source to Stage\Load Statistic to EPL Source.Outputs[OLE DB Source Error Output].Columns[total_shot]"
+                          name="total_shot" />
+                        <outputColumn
+                          refId="Package\Load Static\Statistic_EPL Source to Stage\Load Statistic to EPL Source.Outputs[OLE DB Source Error Output].Columns[shot_on_target]"
+                          dataType="i4"
+                          lineageId="Package\Load Static\Statistic_EPL Source to Stage\Load Statistic to EPL Source.Outputs[OLE DB Source Error Output].Columns[shot_on_target]"
+                          name="shot_on_target" />
+                        <outputColumn
+                          refId="Package\Load Static\Statistic_EPL Source to Stage\Load Statistic to EPL Source.Outputs[OLE DB Source Error Output].Columns[ball_control]"
+                          dataType="i4"
+                          lineageId="Package\Load Static\Statistic_EPL Source to Stage\Load Statistic to EPL Source.Outputs[OLE DB Source Error Output].Columns[ball_control]"
+                          name="ball_control" />
+                        <outputColumn
+                          refId="Package\Load Static\Statistic_EPL Source to Stage\Load Statistic to EPL Source.Outputs[OLE DB Source Error Output].Columns[total_number_of_passes]"
+                          dataType="i4"
+                          lineageId="Package\Load Static\Statistic_EPL Source to Stage\Load Statistic to EPL Source.Outputs[OLE DB Source Error Output].Columns[total_number_of_passes]"
+                          name="total_number_of_passes" />
+                        <outputColumn
+                          refId="Package\Load Static\Statistic_EPL Source to Stage\Load Statistic to EPL Source.Outputs[OLE DB Source Error Output].Columns[corner_kicks]"
+                          dataType="i4"
+                          lineageId="Package\Load Static\Statistic_EPL Source to Stage\Load Statistic to EPL Source.Outputs[OLE DB Source Error Output].Columns[corner_kicks]"
+                          name="corner_kicks" />
+                        <outputColumn
+                          refId="Package\Load Static\Statistic_EPL Source to Stage\Load Statistic to EPL Source.Outputs[OLE DB Source Error Output].Columns[offside]"
+                          dataType="i4"
+                          lineageId="Package\Load Static\Statistic_EPL Source to Stage\Load Statistic to EPL Source.Outputs[OLE DB Source Error Output].Columns[offside]"
+                          name="offside" />
+                        <outputColumn
+                          refId="Package\Load Static\Statistic_EPL Source to Stage\Load Statistic to EPL Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Load Static\Statistic_EPL Source to Stage\Load Statistic to EPL Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Load Static\Statistic_EPL Source to Stage\Load Statistic to EPL Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Load Static\Statistic_EPL Source to Stage\Load Statistic to EPL Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Load Static\Statistic_EPL Source to Stage.Paths[OLE DB Source Output]"
+                  endId="Package\Load Static\Statistic_EPL Source to Stage\Insert Statistic to EPL Stage.Inputs[OLE DB Destination Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\Load Static\Statistic_EPL Source to Stage\Load Statistic to EPL Source.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Load Static\Truncate Statistic_EPL_Stage"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{7E49B420-A96A-4297-ABD8-7C44562CC635}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Truncate Statistic_EPL_Stage"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="2">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{BAD6521E-74C1-4274-86E7-874F429F5A63}"
+              SQLTask:SqlStatementSource="DELETE FROM [Statistic_EPL_Stage]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Load Static.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{60795DD4-6971-48D3-81E6-3A1EE86FC6D0}"
+          DTS:From="Package\Load Static\Truncate Statistic_EPL_Stage"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Load Static\Statistic_EPL Source to Stage" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Load Team"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{04E79E38-EE0F-4C3E-82D5-8AAEF886CC41}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Load Team">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Load Team\Team_EPL Source to Stage"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{632FFCF4-C425-4071-8288-A54821B6166C}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Team_EPL Source to Stage"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Load Team\Team_EPL Source to Stage\Insert team to EPL Stage"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="Insert team to EPL Stage"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[Team_EPL_Stage]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Load Team\Team_EPL Source to Stage\Insert team to EPL Stage.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[KHOI.Stage_FOOTBALL]"
+                      connectionManagerRefId="Package.ConnectionManagers[KHOI.Stage_FOOTBALL]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Load Team\Team_EPL Source to Stage\Insert team to EPL Stage.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Load Team\Team_EPL Source to Stage\Insert team to EPL Stage.Inputs[OLE DB Destination Input].Columns[team_id]"
+                          cachedDataType="i4"
+                          cachedName="team_id"
+                          externalMetadataColumnId="Package\Load Team\Team_EPL Source to Stage\Insert team to EPL Stage.Inputs[OLE DB Destination Input].ExternalColumns[team_id]"
+                          lineageId="Package\Load Team\Team_EPL Source to Stage\Load team from EPL Source.Outputs[OLE DB Source Output].Columns[team_id]" />
+                        <inputColumn
+                          refId="Package\Load Team\Team_EPL Source to Stage\Insert team to EPL Stage.Inputs[OLE DB Destination Input].Columns[name]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="name"
+                          externalMetadataColumnId="Package\Load Team\Team_EPL Source to Stage\Insert team to EPL Stage.Inputs[OLE DB Destination Input].ExternalColumns[name]"
+                          lineageId="Package\Load Team\Team_EPL Source to Stage\Load team from EPL Source.Outputs[OLE DB Source Output].Columns[name]" />
+                        <inputColumn
+                          refId="Package\Load Team\Team_EPL Source to Stage\Insert team to EPL Stage.Inputs[OLE DB Destination Input].Columns[logo]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="255"
+                          cachedName="logo"
+                          externalMetadataColumnId="Package\Load Team\Team_EPL Source to Stage\Insert team to EPL Stage.Inputs[OLE DB Destination Input].ExternalColumns[logo]"
+                          lineageId="Package\Load Team\Team_EPL Source to Stage\Load team from EPL Source.Outputs[OLE DB Source Output].Columns[logo]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Load Team\Team_EPL Source to Stage\Insert team to EPL Stage.Inputs[OLE DB Destination Input].ExternalColumns[team_id]"
+                          dataType="i4"
+                          name="team_id" />
+                        <externalMetadataColumn
+                          refId="Package\Load Team\Team_EPL Source to Stage\Insert team to EPL Stage.Inputs[OLE DB Destination Input].ExternalColumns[name]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="name" />
+                        <externalMetadataColumn
+                          refId="Package\Load Team\Team_EPL Source to Stage\Insert team to EPL Stage.Inputs[OLE DB Destination Input].ExternalColumns[logo]"
+                          codePage="1252"
+                          dataType="str"
+                          length="255"
+                          name="logo" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Load Team\Team_EPL Source to Stage\Insert team to EPL Stage.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Load Team\Team_EPL Source to Stage\Insert team to EPL Stage.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Load Team\Team_EPL Source to Stage\Insert team to EPL Stage.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Load Team\Team_EPL Source to Stage\Insert team to EPL Stage.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Load Team\Team_EPL Source to Stage\Insert team to EPL Stage.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Load Team\Team_EPL Source to Stage\Insert team to EPL Stage.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Load Team\Team_EPL Source to Stage\Load team from EPL Source"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="Load team from EPL Source"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[Team]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Load Team\Team_EPL Source to Stage\Load team from EPL Source.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[KHOI.EPL]"
+                      connectionManagerRefId="Package.ConnectionManagers[KHOI.EPL]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Load Team\Team_EPL Source to Stage\Load team from EPL Source.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Load Team\Team_EPL Source to Stage\Load team from EPL Source.Outputs[OLE DB Source Output].Columns[team_id]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Load Team\Team_EPL Source to Stage\Load team from EPL Source.Outputs[OLE DB Source Output].ExternalColumns[team_id]"
+                          lineageId="Package\Load Team\Team_EPL Source to Stage\Load team from EPL Source.Outputs[OLE DB Source Output].Columns[team_id]"
+                          name="team_id"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Load Team\Team_EPL Source to Stage\Load team from EPL Source.Outputs[OLE DB Source Output].Columns[name]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Load Team\Team_EPL Source to Stage\Load team from EPL Source.Outputs[OLE DB Source Output].ExternalColumns[name]"
+                          length="50"
+                          lineageId="Package\Load Team\Team_EPL Source to Stage\Load team from EPL Source.Outputs[OLE DB Source Output].Columns[name]"
+                          name="name"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Load Team\Team_EPL Source to Stage\Load team from EPL Source.Outputs[OLE DB Source Output].Columns[logo]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Load Team\Team_EPL Source to Stage\Load team from EPL Source.Outputs[OLE DB Source Output].ExternalColumns[logo]"
+                          length="255"
+                          lineageId="Package\Load Team\Team_EPL Source to Stage\Load team from EPL Source.Outputs[OLE DB Source Output].Columns[logo]"
+                          name="logo"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Load Team\Team_EPL Source to Stage\Load team from EPL Source.Outputs[OLE DB Source Output].ExternalColumns[team_id]"
+                          dataType="i4"
+                          name="team_id" />
+                        <externalMetadataColumn
+                          refId="Package\Load Team\Team_EPL Source to Stage\Load team from EPL Source.Outputs[OLE DB Source Output].ExternalColumns[name]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="name" />
+                        <externalMetadataColumn
+                          refId="Package\Load Team\Team_EPL Source to Stage\Load team from EPL Source.Outputs[OLE DB Source Output].ExternalColumns[logo]"
+                          codePage="1252"
+                          dataType="str"
+                          length="255"
+                          name="logo" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Load Team\Team_EPL Source to Stage\Load team from EPL Source.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Load Team\Team_EPL Source to Stage\Load team from EPL Source.Outputs[OLE DB Source Error Output].Columns[team_id]"
+                          dataType="i4"
+                          lineageId="Package\Load Team\Team_EPL Source to Stage\Load team from EPL Source.Outputs[OLE DB Source Error Output].Columns[team_id]"
+                          name="team_id" />
+                        <outputColumn
+                          refId="Package\Load Team\Team_EPL Source to Stage\Load team from EPL Source.Outputs[OLE DB Source Error Output].Columns[name]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\Load Team\Team_EPL Source to Stage\Load team from EPL Source.Outputs[OLE DB Source Error Output].Columns[name]"
+                          name="name" />
+                        <outputColumn
+                          refId="Package\Load Team\Team_EPL Source to Stage\Load team from EPL Source.Outputs[OLE DB Source Error Output].Columns[logo]"
+                          codePage="1252"
+                          dataType="str"
+                          length="255"
+                          lineageId="Package\Load Team\Team_EPL Source to Stage\Load team from EPL Source.Outputs[OLE DB Source Error Output].Columns[logo]"
+                          name="logo" />
+                        <outputColumn
+                          refId="Package\Load Team\Team_EPL Source to Stage\Load team from EPL Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Load Team\Team_EPL Source to Stage\Load team from EPL Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Load Team\Team_EPL Source to Stage\Load team from EPL Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Load Team\Team_EPL Source to Stage\Load team from EPL Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Load Team\Team_EPL Source to Stage.Paths[OLE DB Source Output]"
+                  endId="Package\Load Team\Team_EPL Source to Stage\Insert team to EPL Stage.Inputs[OLE DB Destination Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\Load Team\Team_EPL Source to Stage\Load team from EPL Source.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Load Team\Truncate Team_EPL_Stage"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{ACFC3D30-B7B8-4A2D-82AF-0379E27607BA}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Truncate Team_EPL_Stage"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="3">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{BAD6521E-74C1-4274-86E7-874F429F5A63}"
+              SQLTask:SqlStatementSource="DELETE FROM [Statistic_EPL_Stage]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Load Team.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{896E114B-00C7-4406-8402-8CC5E8E41C10}"
+          DTS:From="Package\Load Team\Truncate Team_EPL_Stage"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Load Team\Team_EPL Source to Stage" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="205.6,41.6"
+          Id="Package\Load Event\Truncate Event_EPL_Stage"
+          TopLeft="28.226195657132,36.6980418396655" />
+        <NodeLayout
+          Size="205.6,41.6"
+          Id="Package\Load Event\Event_ELP Source to Stage"
+          TopLeft="30.1142897284762,129.214709220419" />
+        <EdgeLayout
+          Id="Package\Load Event.PrecedenceConstraints[Constraint]"
+          TopLeft="131.970242692804,78.2980418396654">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,50.9166673807538"
+              Start="0,0"
+              End="0,43.4166673807538">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,43.4166673807538" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="265.6,225.6"
+          Size="265.6,268.8"
+          Id="Package\Load Event"
+          TopLeft="186.554760255497,76.8382363156465" />
+        <NodeLayout
+          Size="207.2,41.6"
+          Id="Package\Load Match\Truncate Match_EPL_Stage"
+          TopLeft="26.9285717934979,12.0911785699505" />
+        <NodeLayout
+          Size="208,41.6"
+          Id="Package\Load Match\Match_EPL Source to Stage"
+          TopLeft="33.8928660987592,89.5088261703719" />
+        <EdgeLayout
+          Id="Package\Load Match.PrecedenceConstraints[Constraint]"
+          TopLeft="134.210718946129,53.6911785699505">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,35.8176476004214"
+              Start="0,0"
+              End="0,28.3176476004214">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28.3176476004214" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="260.8,184"
+          Size="260.8,227.2"
+          Id="Package\Load Match"
+          TopLeft="487.500008302075,82.6029409324835" />
+        <NodeLayout
+          Size="216,41.6"
+          Id="Package\Load Static\Truncate Statistic_EPL_Stage"
+          TopLeft="29.6071432676851,13.4117701111369" />
+        <NodeLayout
+          Size="216,41.6"
+          Id="Package\Load Static\Statistic_EPL Source to Stage"
+          TopLeft="27.1571518890711,103.797064172479" />
+        <EdgeLayout
+          Id="Package\Load Static.PrecedenceConstraints[Constraint]"
+          TopLeft="136.382147578378,55.0117701111369">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,48.7852940613422"
+              Start="0,0"
+              End="0,41.2852940613422">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41.2852940613422" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="272,200"
+          Size="272,243.2"
+          Id="Package\Load Static"
+          TopLeft="508.571437232349,396.844121462375" />
+        <NodeLayout
+          Size="205.6,41.6"
+          Id="Package\Load Team\Truncate Team_EPL_Stage"
+          TopLeft="32.2857147418723,14.385296978464" />
+        <NodeLayout
+          Size="205.6,41.6"
+          Id="Package\Load Team\Team_EPL Source to Stage"
+          TopLeft="24.7928612026634,108.611770658097" />
+        <EdgeLayout
+          Id="Package\Load Team.PrecedenceConstraints[Constraint]"
+          TopLeft="131.339287972268,55.985296978464">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,52.626473679633"
+              Start="0,0"
+              End="0,45.126473679633">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,45.126473679633" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="289.6,205.6"
+          Size="289.6,248.8"
+          Id="Package\Load Team"
+          TopLeft="184.142859904134,394.726473406153" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Load Event\Event_ELP Source to Stage">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="212,41.6"
+          Id="Package\Load Event\Event_ELP Source to Stage\Load event from EPL Source"
+          TopLeft="279,92" />
+        <NodeLayout
+          Size="170.4,41.6"
+          Id="Package\Load Event\Event_ELP Source to Stage\OLE DB Destination"
+          TopLeft="301.538461538462,196.153846153846" />
+        <EdgeLayout
+          Id="Package\Load Event\Event_ELP Source to Stage.Paths[OLE DB Source Output]"
+          TopLeft="385.869230769231,133.6">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,62.5538461538461"
+              Start="0,0"
+              End="0,55.0538461538461">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,55.0538461538461" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Event\Event_ELP Source to Stage\Load event from EPL Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Event\Event_ELP Source to Stage\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Load Match\Match_EPL Source to Stage">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="212.8,41.6"
+          Id="Package\Load Match\Match_EPL Source to Stage\Load Match from ELP source"
+          TopLeft="333,123" />
+        <NodeLayout
+          Size="200.8,41.6"
+          Id="Package\Load Match\Match_EPL Source to Stage\Insert Match to ELP Stage"
+          TopLeft="332,252" />
+        <EdgeLayout
+          Id="Package\Load Match\Match_EPL Source to Stage.Paths[OLE DB Source Output]"
+          TopLeft="435.9,164.6">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,87.4"
+              Start="0,0"
+              End="0,79.9">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,79.9" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Match\Match_EPL Source to Stage\Load Match from ELP source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Match\Match_EPL Source to Stage\Insert Match to ELP Stage">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Load Team\Team_EPL Source to Stage">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="209.6,41.6"
+          Id="Package\Load Team\Team_EPL Source to Stage\Load team from EPL Source"
+          TopLeft="333,157" />
+        <NodeLayout
+          Size="196,41.6"
+          Id="Package\Load Team\Team_EPL Source to Stage\Insert team to EPL Stage"
+          TopLeft="347,273" />
+        <EdgeLayout
+          Id="Package\Load Team\Team_EPL Source to Stage.Paths[OLE DB Source Output]"
+          TopLeft="441.4,198.6">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,74.4000000000001"
+              Start="0,0"
+              End="0,66.9000000000001">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,66.9000000000001" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Team\Team_EPL Source to Stage\Load team from EPL Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Team\Team_EPL Source to Stage\Insert team to EPL Stage">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Load Static\Statistic_EPL Source to Stage">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="209.6,41.6"
+          Id="Package\Load Static\Statistic_EPL Source to Stage\Load Statistic to EPL Source"
+          TopLeft="338,105" />
+        <NodeLayout
+          Size="209.6,41.6"
+          Id="Package\Load Static\Statistic_EPL Source to Stage\Insert Statistic to EPL Stage"
+          TopLeft="337,217" />
+        <EdgeLayout
+          Id="Package\Load Static\Statistic_EPL Source to Stage.Paths[OLE DB Source Output]"
+          TopLeft="442.3,146.6">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,70.4000000000001"
+              Start="0,0"
+              End="0,62.9000000000001">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,62.9000000000001" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Static\Statistic_EPL Source to Stage\Load Statistic to EPL Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Static\Statistic_EPL Source to Stage\Insert Statistic to EPL Stage">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

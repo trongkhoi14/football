@@ -1,0 +1,103 @@
+﻿<DeploymentSnapshot xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0">
+  <Target>
+    <Database>CUBE</Database>
+    <Server>KHOI\NEW</Server>
+    <ConnectionString>Data Source=KHOI\NEW;Timeout=0</ConnectionString>
+  </Target>
+  <Options>
+    <TransactionalDeployment>false</TransactionalDeployment>
+    <PartitionDeployment>DeployPartitions</PartitionDeployment>
+    <RoleDeployment>DeployRolesRetainMembers</RoleDeployment>
+    <ProcessingOption>Default</ProcessingOption>
+    <OutputScript></OutputScript>
+    <ImpactAnalysisFile></ImpactAnalysisFile>
+    <ConfigurationSettingsDeployment>Deploy</ConfigurationSettingsDeployment>
+    <OptimizationSettingsDeployment>Deploy</OptimizationSettingsDeployment>
+    <WriteBackTableCreation>UseExisting</WriteBackTableCreation>
+  </Options>
+  <Snapshot>
+    <ObjectSnapshots>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.RelationalDataSource</Type>
+        <TimeStamp>pVpgxG/XmC08lCg3ei+oDvUq4Vc=1/3/2024 10:11:54 PM1/3/2024 10:11:54 PM</TimeStamp>
+        <ID>
+          <String>DDS FOOTBALL</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.DataSourceView</Type>
+        <TimeStamp>sc+hnWWl6gzZ8PQnsuZVY/10Bck=1/3/2024 10:12:06 PM1/3/2024 10:12:06 PM</TimeStamp>
+        <ID>
+          <String>DDS FOOTBALL</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>+KO28kZaGDNjkX7T/j7NXGIGDZo=1/3/2024 11:16:50 PM1/3/2024 11:16:50 PM</TimeStamp>
+        <ID>
+          <String>DIM Team</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>SFd6hDyIIfN16NMgowBhfkmec4A=1/3/2024 11:17:08 PM1/3/2024 11:17:08 PM</TimeStamp>
+        <ID>
+          <String>DIM Role</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>62LTeQL+QND71dngox1XrMpxDrw=1/3/2024 11:17:20 PM1/3/2024 11:17:20 PM</TimeStamp>
+        <ID>
+          <String>DIM League</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>ga7IDPIHYgEcgsMpkjf/VT3u9pc=1/3/2024 11:17:36 PM1/3/2024 11:17:36 PM</TimeStamp>
+        <ID>
+          <String>DIM Date</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Cube</Type>
+        <TimeStamp>g9KK7zeBNhGWf8AZxqEFL7YcTUM=1/3/2024 11:17:57 PM1/3/2024 11:07:20 PMQrR1ZJKa8kGtzA1lxMgcaiGTj40=1/3/2024 11:17:57 PM1/3/2024 11:07:20 PM</TimeStamp>
+        <ID>
+          <String>DDS FOOTBALL</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.MiningStructure</Type>
+        <TimeStamp>l2gG8B17dPu1OAFVdZhs0Jogrj8=1/4/2024 8:02:12 PM1/4/2024 7:47:35 PM</TimeStamp>
+        <ID>
+          <String>DIM Team</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.MiningStructure</Type>
+        <TimeStamp>Pnu6rcw5rrUDI9hrtUZwquWl56g=1/4/2024 10:06:53 PM1/4/2024 10:06:53 PM</TimeStamp>
+        <ID>
+          <String>FACT Match</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.MiningStructure</Type>
+        <TimeStamp>5Lb1onqWze2D3MdAv4Qx8Tn0KxI=1/4/2024 10:22:21 PM1/4/2024 10:22:21 PM</TimeStamp>
+        <ID>
+          <String>FACT Match 2</String>
+        </ID>
+      </ObjectSnapshot>
+    </ObjectSnapshots>
+    <DatabaseSnapshot>
+      <Type>Microsoft.AnalysisServices.Database</Type>
+      <TimeStamp>FGwpkJNqSSs3RFMG5A7BwYHyqco=1/3/2024 10:09:33 PM1/3/2024 10:09:33 PM</TimeStamp>
+      <ID>
+        <String>CUBE</String>
+      </ID>
+    </DatabaseSnapshot>
+    <Granularity>Coarse</Granularity>
+  </Snapshot>
+  <AssemblyLocations />
+  <ProcessingComplete>true</ProcessingComplete>
+  <LastDeployed>2024-01-05T01:06:21.49Z</LastDeployed>
+</DeploymentSnapshot>

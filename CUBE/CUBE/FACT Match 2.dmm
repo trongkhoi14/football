@@ -1,0 +1,227 @@
+﻿<MiningStructure xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="e992d3c6-9759-4bdb-89cd-7f926fe4bd71" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+  <ID>FACT Match 2</ID>
+  <Name>FACT Match 2</Name>
+  <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+  <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+  <Annotations>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:CaseTableName</Name>
+      <Value>dbo_FACT_Match</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowFriendlyNames</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramLayout</Name>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowRelationshipNames</Name>
+      <Value>false</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:UseDiagramDefaultLayout</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortLeft</Name>
+      <Value>0</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortTop</Name>
+      <Value>0</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingLeft</Name>
+      <Value>0</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingTop</Name>
+      <Value>0</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramZoom</Name>
+      <Value>100</Value>
+    </Annotation>
+  </Annotations>
+  <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
+  <State>Unprocessed</State>
+  <Source xsi:type="DataSourceViewBinding" dwd:design-time-name="4ba5344b-7873-4a11-b19c-cfdc76b6bf03">
+    <DataSourceViewID>DDS FOOTBALL</DataSourceViewID>
+  </Source>
+  <Columns>
+    <Column xsi:type="ScalarMiningStructureColumn" dwd:design-time-name="4af9656c-cad7-4457-9dde-1dac2affc4e6">
+      <ID>Ball Control</ID>
+      <Name>Ball Control</Name>
+      <Type>Long</Type>
+      <Content>Discrete</Content>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="d0608c15-13a1-4454-8ca0-4c0095f41586">
+          <DataType>Integer</DataType>
+          <DataSize>-1</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="bb87757d-841f-4bf9-a414-9288aec28d43">
+            <TableID>dbo_FACT_Match</TableID>
+            <ColumnID>ball_control</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+    </Column>
+    <Column xsi:type="ScalarMiningStructureColumn" dwd:design-time-name="6a3c4377-7353-47d6-9cb0-1bb3d413de66">
+      <ID>Corner Kicks</ID>
+      <Name>Corner Kicks</Name>
+      <Type>Long</Type>
+      <Content>Continuous</Content>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="8fbd4d66-7bb8-406a-8744-dc75bcf108e1">
+          <DataType>Integer</DataType>
+          <DataSize>-1</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="fda7fe21-eea2-4cf0-b8dc-8cf8d6e495fc">
+            <TableID>dbo_FACT_Match</TableID>
+            <ColumnID>corner_kicks</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+    </Column>
+    <Column xsi:type="ScalarMiningStructureColumn" dwd:design-time-name="758500e3-f021-4b42-be35-c156dc85e30c">
+      <ID>Match Id</ID>
+      <Name>Match Id</Name>
+      <IsKey>true</IsKey>
+      <Type>Long</Type>
+      <Content>Key</Content>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="96c8a839-fef2-482d-adbc-ba84e0d3a6b8">
+          <DataType>Integer</DataType>
+          <DataSize>-1</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="1b3fcda2-543c-4b20-a12e-e972b89ea946">
+            <TableID>dbo_FACT_Match</TableID>
+            <ColumnID>match_id</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+    </Column>
+    <Column xsi:type="ScalarMiningStructureColumn" dwd:design-time-name="4b43b811-5823-4bc0-9bd2-45f7851748d2">
+      <ID>Number Of Passes</ID>
+      <Name>Number Of Passes</Name>
+      <Type>Long</Type>
+      <Content>Discrete</Content>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="17658536-e967-4e08-86b5-29f931f9472e">
+          <DataType>Integer</DataType>
+          <DataSize>-1</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="5bb3bc60-1ef6-41a9-b595-77de29c5e89e">
+            <TableID>dbo_FACT_Match</TableID>
+            <ColumnID>number_of_passes</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+    </Column>
+    <Column xsi:type="ScalarMiningStructureColumn" dwd:design-time-name="eff1c6c0-b216-4470-b112-f28b61360ed9">
+      <ID>Shot On Target</ID>
+      <Name>Shot On Target</Name>
+      <Type>Long</Type>
+      <Content>Continuous</Content>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="9b7e479e-a75d-417b-bea7-b4ed3fb7ab13">
+          <DataType>Integer</DataType>
+          <DataSize>-1</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="660a00f3-1567-4196-abf3-228ae2c94aca">
+            <TableID>dbo_FACT_Match</TableID>
+            <ColumnID>shot_on_target</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+    </Column>
+    <Column xsi:type="ScalarMiningStructureColumn" dwd:design-time-name="25bbed43-743e-446f-b1a4-d2c78d833a25">
+      <ID>Total Goal</ID>
+      <Name>Total Goal</Name>
+      <Type>Long</Type>
+      <Content>Continuous</Content>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="cfce88ab-057f-4c74-9df0-9f6e751097b4">
+          <DataType>Integer</DataType>
+          <DataSize>-1</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="8a3d27a9-6b25-4d41-b3fd-49465a47d244">
+            <TableID>dbo_FACT_Match</TableID>
+            <ColumnID>total_goal</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+    </Column>
+    <Column xsi:type="ScalarMiningStructureColumn" dwd:design-time-name="8edd7dfe-2862-4e54-b089-290282983a6e">
+      <ID>Total Shot</ID>
+      <Name>Total Shot</Name>
+      <Type>Long</Type>
+      <Content>Cyclical</Content>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="2930e7ca-402f-441e-b4c7-23abadf4f941">
+          <DataType>Integer</DataType>
+          <DataSize>-1</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="344b58ff-c256-4f50-ad6a-674ce65a9213">
+            <TableID>dbo_FACT_Match</TableID>
+            <ColumnID>total_shot</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+    </Column>
+  </Columns>
+  <MiningModels>
+    <MiningModel dwd:design-time-name="306b115b-8ff3-485a-8e45-770c91bfa6b7">
+      <ID>FACT Match 2</ID>
+      <Name>FACT Match 2</Name>
+      <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+      <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+      <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
+      <State>Unprocessed</State>
+      <Algorithm>Microsoft_Decision_Trees</Algorithm>
+      <Columns>
+        <Column dwd:design-time-name="e688b49a-8344-486c-b40f-29a104be492b">
+          <ID>Ball Control</ID>
+          <Name>Ball Control</Name>
+          <SourceColumnID>Ball Control</SourceColumnID>
+        </Column>
+        <Column dwd:design-time-name="1060a605-18e8-41eb-8f16-bcc8f07d2e08">
+          <ID>Corner Kicks</ID>
+          <Name>Corner Kicks</Name>
+          <SourceColumnID>Corner Kicks</SourceColumnID>
+          <ModelingFlags>
+            <ModelingFlag>REGRESSOR</ModelingFlag>
+          </ModelingFlags>
+        </Column>
+        <Column dwd:design-time-name="361bda99-ec78-4d52-8494-4ac7e2d44ca3">
+          <ID>Match Id</ID>
+          <Name>Match Id</Name>
+          <SourceColumnID>Match Id</SourceColumnID>
+          <Usage>Key</Usage>
+        </Column>
+        <Column dwd:design-time-name="d8f585cc-c330-4043-a0ba-4bf1388fed25">
+          <ID>Number Of Passes</ID>
+          <Name>Number Of Passes</Name>
+          <SourceColumnID>Number Of Passes</SourceColumnID>
+        </Column>
+        <Column dwd:design-time-name="c5e31ef5-c692-4d83-b572-093478e54a1d">
+          <ID>Shot On Target</ID>
+          <Name>Shot On Target</Name>
+          <SourceColumnID>Shot On Target</SourceColumnID>
+          <ModelingFlags>
+            <ModelingFlag>REGRESSOR</ModelingFlag>
+          </ModelingFlags>
+        </Column>
+        <Column dwd:design-time-name="5ff9d394-45c1-4d1a-8e2c-848c4218dce4">
+          <ID>Total Goal</ID>
+          <Name>Total Goal</Name>
+          <SourceColumnID>Total Goal</SourceColumnID>
+          <Usage>PredictOnly</Usage>
+          <ModelingFlags>
+            <ModelingFlag>REGRESSOR</ModelingFlag>
+          </ModelingFlags>
+        </Column>
+        <Column dwd:design-time-name="09861725-42d2-4f5c-85e4-c55fed927593">
+          <ID>Total Shot</ID>
+          <Name>Total Shot</Name>
+          <SourceColumnID>Total Shot</SourceColumnID>
+        </Column>
+      </Columns>
+    </MiningModel>
+  </MiningModels>
+  <ddl100_100:HoldoutMaxPercent>30</ddl100_100:HoldoutMaxPercent>
+</MiningStructure>

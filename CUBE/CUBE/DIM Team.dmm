@@ -1,0 +1,175 @@
+﻿<MiningStructure xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="0c90ec3c-3977-4b69-ab38-16ef82bbf0e5" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+  <ID>DIM Team</ID>
+  <Name>DIM Team</Name>
+  <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+  <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+  <Annotations>
+    <Annotation>
+      <Name>MDXFilterComponent</Name>
+      <Value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;Filter xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/SQLServer/reporting/QuerySpecification"&gt;&lt;FilterItems xmlns="http://schemas.microsoft.com/AnalysisServices/QueryDefinition" /&gt;&lt;/Filter&gt;</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowFriendlyNames</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramLayout</Name>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowRelationshipNames</Name>
+      <Value>false</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:UseDiagramDefaultLayout</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortLeft</Name>
+      <Value>0</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortTop</Name>
+      <Value>0</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingLeft</Name>
+      <Value>0</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingTop</Name>
+      <Value>0</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramZoom</Name>
+      <Value>100</Value>
+    </Annotation>
+  </Annotations>
+  <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
+  <State>Unprocessed</State>
+  <Source xsi:type="CubeDimensionBinding" dwd:design-time-name="b5465cb7-eb6b-46a0-8f68-784ade3b7a42">
+    <DataSourceID>.</DataSourceID>
+    <CubeID>DDS FOOTBALL</CubeID>
+    <CubeDimensionID>DIM Team</CubeDimensionID>
+    <Filter></Filter>
+  </Source>
+  <Columns>
+    <Column xsi:type="ScalarMiningStructureColumn" dwd:design-time-name="1f445686-fb84-48a8-b717-d36a2c2b13f5">
+      <ID>Team Name</ID>
+      <Name>Team Name</Name>
+      <IsKey>true</IsKey>
+      <Type>Text</Type>
+      <Source xsi:type="CubeAttributeBinding" dwd:design-time-name="1eacf839-e4c3-45b1-914a-3d581e6eefb5">
+        <CubeID>DDS FOOTBALL</CubeID>
+        <CubeDimensionID>DIM Team</CubeDimensionID>
+        <AttributeID>Team Name</AttributeID>
+        <Type>All</Type>
+      </Source>
+      <Content>Key</Content>
+    </Column>
+    <Column xsi:type="ScalarMiningStructureColumn" dwd:design-time-name="fe7ae824-9db5-4905-be03-fa7c3e109a56">
+      <ID>Ball Control</ID>
+      <Name>Ball Control</Name>
+      <Type>Long</Type>
+      <Source xsi:type="MeasureBinding" dwd:design-time-name="f27b50ed-8dde-430f-9299-8d96bbdcb5af">
+        <MeasureID>Ball Control</MeasureID>
+      </Source>
+      <Content>Continuous</Content>
+    </Column>
+    <Column xsi:type="ScalarMiningStructureColumn" dwd:design-time-name="9de21a15-2d0a-4c58-908e-102e62a8d30f">
+      <ID>Shot On Target</ID>
+      <Name>Shot On Target</Name>
+      <Type>Long</Type>
+      <Source xsi:type="MeasureBinding" dwd:design-time-name="50f5c7ed-7648-4d33-801b-54892268cfcb">
+        <MeasureID>Shot On Target</MeasureID>
+      </Source>
+      <Content>Continuous</Content>
+    </Column>
+    <Column xsi:type="ScalarMiningStructureColumn" dwd:design-time-name="6287a34f-8bab-415d-a8dc-6ed704c1d3d7">
+      <ID>Total Goal</ID>
+      <Name>Total Goal</Name>
+      <Type>Long</Type>
+      <Source xsi:type="MeasureBinding" dwd:design-time-name="17f57766-9296-4a6d-8ae9-9375fa8df60f">
+        <MeasureID>Total Goal</MeasureID>
+      </Source>
+      <Content>Continuous</Content>
+    </Column>
+  </Columns>
+  <MiningModels>
+    <MiningModel dwd:design-time-name="4fcc20de-1084-4513-b11f-072947519b3a">
+      <ID>DIM Team</ID>
+      <Name>DIM Team</Name>
+      <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+      <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+      <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
+      <State>Unprocessed</State>
+      <Algorithm>Microsoft_Decision_Trees</Algorithm>
+      <Columns>
+        <Column dwd:design-time-name="1ffe0435-ab47-4f40-810a-71b4b8e53b6e">
+          <ID>Team Name</ID>
+          <Name>Team Name</Name>
+          <SourceColumnID>Team Name</SourceColumnID>
+          <Usage>Key</Usage>
+        </Column>
+        <Column dwd:design-time-name="e99c3170-c18b-47cf-bb35-c510f360a43f">
+          <ID>Ball Control</ID>
+          <Name>Ball Control</Name>
+          <SourceColumnID>Ball Control</SourceColumnID>
+          <ModelingFlags>
+            <ModelingFlag>REGRESSOR</ModelingFlag>
+          </ModelingFlags>
+        </Column>
+        <Column dwd:design-time-name="86137248-068e-4bbb-ab91-d935d4c97435">
+          <ID>Shot On Target</ID>
+          <Name>Shot On Target</Name>
+          <SourceColumnID>Shot On Target</SourceColumnID>
+          <ModelingFlags>
+            <ModelingFlag>REGRESSOR</ModelingFlag>
+          </ModelingFlags>
+        </Column>
+        <Column dwd:design-time-name="4ab4e5bc-04b5-48e2-8413-a0c6f9f299cb">
+          <ID>Total Goal</ID>
+          <Name>Total Goal</Name>
+          <SourceColumnID>Total Goal</SourceColumnID>
+          <Usage>Predict</Usage>
+          <ModelingFlags>
+            <ModelingFlag>REGRESSOR</ModelingFlag>
+          </ModelingFlags>
+        </Column>
+      </Columns>
+    </MiningModel>
+    <MiningModel dwd:design-time-name="667ce7d1-45fb-4194-8497-9182a36b0227">
+      <ID>Model Neural Network</ID>
+      <Name>Model Neural Network</Name>
+      <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+      <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+      <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
+      <State>Unprocessed</State>
+      <Algorithm>Microsoft_Neural_Network</Algorithm>
+      <Columns>
+        <Column dwd:design-time-name="64f0096a-fd1f-4761-a250-325df18d4696">
+          <ID>Team Name</ID>
+          <Name>Team Name</Name>
+          <SourceColumnID>Team Name</SourceColumnID>
+          <Usage>Key</Usage>
+        </Column>
+        <Column dwd:design-time-name="2d367d51-cbb9-4fb7-9c53-b683f82805a1">
+          <ID>Ball Control</ID>
+          <Name>Ball Control</Name>
+          <SourceColumnID>Ball Control</SourceColumnID>
+        </Column>
+        <Column dwd:design-time-name="84e1632b-3c37-425e-859c-bb40bcb65726">
+          <ID>Shot On Target</ID>
+          <Name>Shot On Target</Name>
+          <SourceColumnID>Shot On Target</SourceColumnID>
+        </Column>
+        <Column dwd:design-time-name="a58daf11-0f95-47ae-8ae1-4c08ac84c5ae">
+          <ID>Total Goal</ID>
+          <Name>Total Goal</Name>
+          <SourceColumnID>Total Goal</SourceColumnID>
+          <Usage>Predict</Usage>
+        </Column>
+      </Columns>
+    </MiningModel>
+  </MiningModels>
+  <ddl100_100:HoldoutMaxPercent>20</ddl100_100:HoldoutMaxPercent>
+</MiningStructure>
